@@ -3,7 +3,8 @@ node {
 
     checkout scm
 
-	echo env.BRANCH_NAME
+	def gitCommit = bat(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
+	echo gitCommit
 	
     // pull dependencies from npm
     // on windows use: 
