@@ -1,2 +1,0 @@
-# solitaire
-New Project
