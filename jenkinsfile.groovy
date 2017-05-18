@@ -28,7 +28,7 @@ bat 'npm run test-single-run -- --browsers PhantomJS'
 stage 'Browser Testing'
 
     runTests("Chrome")
-echo {status}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}] [${env.BRANCH_NAME}]'
+echo "{status}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}] [${env.BRANCH_NAME}]'"
 
 def runTests(browser) {
     node {
