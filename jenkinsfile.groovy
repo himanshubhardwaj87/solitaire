@@ -27,7 +27,7 @@ stage 'Browser Testing'
 
     runTests("Chrome")
 	node{
-echo "{status}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}] ${BRANCH_NAME} ${env.BRANCH_NAME} ${env.NODE_NAME}'"
+echo "{status}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}] ${env.BRANCH_NAME} ${env.NODE_NAME}'"
 }
 def runTests(browser) {
     node {
