@@ -3,7 +3,7 @@ node {
 
     checkout scm
 
-	def gitCommit = bat(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
+	def gitCommit = sh(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
 	echo gitCommit
 	
     // pull dependencies from npm
