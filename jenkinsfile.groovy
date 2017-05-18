@@ -3,6 +3,8 @@ node {
 
     checkout scm
 
+	echo scm.branches[0].name
+	
     // pull dependencies from npm
     // on windows use: 
 bat 'npm install'
