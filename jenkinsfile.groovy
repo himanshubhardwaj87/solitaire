@@ -31,12 +31,13 @@ stage 'Browser Testing'
 def runTests(browser) {
     node {
         // on windows use: bat 'del /S /Q *'
-        sh 'rm -rf *'
+       // sh 'rm -rf *'
 
-        unstash 'everything'
+        //unstash 'everything'
 
-        // on windows use: bat "npm run test-single-run -- --browsers ${browser}"
-        sh "npm run test-single-run -- --browsers ${browser}"
+        // on windows use: 
+		bat "npm run test-single-run -- --browsers ${browser}"
+        //sh "npm run test-single-run -- --browsers ${browser}"
 
         step([$class: 'JUnitResultArchiver', 
               testResults: 'test-results/**/test-results.xml'])
