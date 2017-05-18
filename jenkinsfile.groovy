@@ -2,9 +2,6 @@ stage 'CI'
 node {
 
     checkout scm
-
-	def gitCommit = sh(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
-	echo gitCommit
 	
     // pull dependencies from npm
     // on windows use: 
@@ -29,8 +26,9 @@ bat 'npm run test-single-run -- --browsers PhantomJS'
 stage 'Browser Testing'
 
     runTests("Chrome")
-echo "{status}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}] [${env.BRANCH_NAME}]'"
-
+	node{
+echo "{status}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}] ${BRANCH_NAME} ${env.BRANCH_NAME} ${env.NODE_NAME}'"
+}
 def runTests(browser) {
     node {
         // on windows use: bat 'del /S /Q *'
