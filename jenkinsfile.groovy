@@ -3,7 +3,7 @@ node {
 
     checkout scm
 
-	echo scm.branches[0].name
+	echo env.BRANCH_NAME
 	
     // pull dependencies from npm
     // on windows use: 
