@@ -6,6 +6,7 @@ import groovy.transform.Field
 stage 'CI'
 node {
     checkout scm
+	 echo "GIT_COMMIT is ${env.GIT_COMMIT}"
     // pull dependencies from npm
 bat 'npm install' 
 stash name: 'everything', 
@@ -33,6 +34,8 @@ bat 'npm run test-single-run -- --browsers PhantomJS'
     // archive karma test results (karma is configured to export junit xml files)
    archive()
    echo "[${env.BUILD_NUMBER}] ${GIT_BRANCH}"
+   def branch = sh(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
+   echo branch
 }
 }
 
