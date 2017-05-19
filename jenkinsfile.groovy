@@ -6,6 +6,7 @@ node {
 }
 
 stage 'PhantomJS Testing'
+node {
 	try{
 	// test with PhantomJS for "fast" "generic" results
 	bat 'npm run test-single-run -- --browsers PhantomJS'
@@ -29,14 +30,9 @@ node{ echo "{status}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}] ${env.BRANCH_NA
 }
 def runTests(browser) {
 	node {
-		// on windows use: bat 'del /S /Q *'
-		// sh 'rm -rf *'
-
-		//unstash 'everything'
 
 		// on windows use:
 		bat "npm run test-single-run -- --browsers ${browser}"
-		//sh "npm run test-single-run -- --browsers ${browser}"
 
 		step([$class: 'JUnitResultArchiver',
 			testResults: 'test-results/**/test-results.xml'])
