@@ -2,12 +2,14 @@ stage 'CI'
 node {
     checkout scm
     // pull dependencies from npm
-bat 'npm install'
-    // test with PhantomJS for "fast" "generic" results         
+bat 'npm install' 
+stash name: 'everything', 
+          excludes: 'test-results/**', 
+          includes: '**'	
 }
 
 def runTests(browser) {
-
+		unstash 'everything'
 		bat "npm run test-single-run -- --browsers ${browser}"
 
 }
