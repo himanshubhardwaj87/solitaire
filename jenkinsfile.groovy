@@ -19,6 +19,9 @@ node {
 	step([$class: 'JUnitResultArchiver',
 		testResults: 'test-results/**/test-results.xml'])
 	}
+	stage 'Browser Testing'
+
+runTests("Chrome")
 }
 
   if (currentBuild.result == null || currentBuild.result == 'SUCCESS' || currentBuild.result == 'FAILURE') {
