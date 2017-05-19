@@ -10,9 +10,9 @@ node {
 	try{
 	// test with PhantomJS for "fast" "generic" results
 	bat 'npm run test-singl-run -- --browsers PhantomJS'
-	 currentBuild.result = 'SUCCESS'
+	echo 'Succeeded!'
 	}catch (Exception err) {
-        currentBuild.result = 'FAILURE'
+         echo "Failed: ${err}"
     }
 	// archive karma test results (karma is configured to export junit xml files)
 	finally {
@@ -20,8 +20,8 @@ node {
 		testResults: 'test-results/**/test-results.xml'])
 	}
 	stage 'Browser Testing'
-
-runTests("Chrome")
+	echo 'Printed whether above succeeded or failed.'
+	runTests("Chrome")
 }
 
  // if (currentBuild.result == null || currentBuild.result == 'SUCCESS' || currentBuild.result == 'FAILURE') {
