@@ -26,11 +26,11 @@ runTests("Chrome")
 
   if (currentBuild.result == null || currentBuild.result == 'SUCCESS' || currentBuild.result == 'FAILURE') {
 //parallel integration testing
-stage 'Browser Testing'
+//stage 'Browser Testing'
 
-runTests("Chrome")
-node{ echo "{status}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}] ${env.BRANCH_NAME} ${env.NODE_NAME}'" }
-}
+//runTests("Chrome")
+//node{ echo "{status}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}] ${env.BRANCH_NAME} ${env.NODE_NAME}'" }
+//}
 def runTests(browser) {
 	node {
 
