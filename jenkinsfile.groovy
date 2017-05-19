@@ -1,6 +1,7 @@
 import hudson.model.*
 import groovy.json.*
 import java.net.URL
+import groovy.transform.Field
 
 stage 'CI'
 node {
