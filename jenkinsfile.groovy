@@ -9,10 +9,15 @@ bat 'npm install'
 def runTests(browser) {
     node {
 		bat "npm run test-single-run -- --browsers ${browser}"
-        step([$class: 'JUnitResultArchiver', 
-              testResults: 'test-results/**/test-results.xml'])
+        
     }
 }
+
+def archive(){
+ step([$class: 'JUnitResultArchiver', 
+          testResults: 'test-results/**/test-results.xml'])
+    }
+
 
 def paralleltask = [:]  
 paralleltask["PhantomJS Testing"] = {  
@@ -20,15 +25,15 @@ paralleltask["PhantomJS Testing"] = {
 
 bat 'npm run test-single-run -- --browsers PhantomJS'
     // archive karma test results (karma is configured to export junit xml files)
-    step([$class: 'JUnitResultArchiver', 
-          testResults: 'test-results/**/test-results.xml'])
-    }
+   archive()
 }
+
+
 
 paralleltask["Browser Testing"] = {  
     node() {
-
 		runTests("Chrome")
+		archive()
     }
 }
 
