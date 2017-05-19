@@ -15,10 +15,10 @@ node {
          echo "Failed: ${err}"
     }
 	// archive karma test results (karma is configured to export junit xml files)
-	finally {
-	step([$class: 'JUnitResultArchiver',
-		testResults: 'test-results/**/test-results.xml'])
-	}
+	//finally {
+	//step([$class: 'JUnitResultArchiver',
+	//	testResults: 'test-results/**/test-results.xml'])
+	//}
 	stage 'Browser Testing'
 	echo 'Printed whether above succeeded or failed.'
 	runTests("Chrome")
