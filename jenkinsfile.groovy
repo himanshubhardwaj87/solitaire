@@ -37,11 +37,10 @@ bat 'npm run test-single-run -- --browsers PhantomJS'
       returnStdout: true,
       script: """
                 @echo off
-                cd ${env.WORKSPACE}\\dotnet-packages.git
                 git rev-parse --abbrev-ref HEAD
                 """
     ).trim()
-   echo ${GIT_BRANCH}
+   echo GIT_BRANCH
 }
 }
 
