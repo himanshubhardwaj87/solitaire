@@ -17,7 +17,7 @@ def runTests(browser) {
 def paralleltask = [:]  
 paralleltask["PhantomJS Testing"] = {  
     node() {
-       	stage 'PhantomJS Testing'
+
 bat 'npm run test-single-run -- --browsers PhantomJS'
     // archive karma test results (karma is configured to export junit xml files)
     step([$class: 'JUnitResultArchiver', 
@@ -27,7 +27,7 @@ bat 'npm run test-single-run -- --browsers PhantomJS'
 
 paralleltask["Browser Testing"] = {  
     node() {
-        stage 'Browser Testing'
+
 		runTests("Chrome")
     }
 }
