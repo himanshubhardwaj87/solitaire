@@ -33,8 +33,15 @@ paralleltask["PhantomJS Testing"] = {
 bat 'npm run test-single-run -- --browsers PhantomJS'
     // archive karma test results (karma is configured to export junit xml files)
    archive()
-   def branch = sh(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
-   echo branch
+   def GIT_BRANCH = bat(
+      returnStdout: true,
+      script: """
+                @echo off
+                cd ${env.WORKSPACE}\\dotnet-packages.git
+                git rev-parse --abbrev-ref HEAD
+                """
+    ).trim()
+   echo ${GIT_BRANCH}
 }
 }
 
