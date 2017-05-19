@@ -33,7 +33,6 @@ paralleltask["PhantomJS Testing"] = {
 bat 'npm run test-single-run -- --browsers PhantomJS'
     // archive karma test results (karma is configured to export junit xml files)
    archive()
-   echo "[${env.BUILD_NUMBER}] ${GIT_BRANCH}"
    def branch = sh(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
    echo branch
 }
@@ -44,7 +43,6 @@ paralleltask["Browser Testing"] = {
     node() {
 		runTests("Chrome")
 		archive()
-		echo "[${env.BUILD_NUMBER}] ${GIT_BRANCH}"
     }
 }
 
