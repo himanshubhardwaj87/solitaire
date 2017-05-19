@@ -11,8 +11,10 @@ node {
 	// test with PhantomJS for "fast" "generic" results
 	bat 'npm run test-singl-run -- --browsers PhantomJS'
 	echo 'Succeeded!'
+	 currentBuild.result = 'SUCCESS'
 	}catch (Exception err) {
          echo "Failed: ${err}"
+		  currentBuild.result = 'FAILURE'
     }
 	// archive karma test results (karma is configured to export junit xml files)
 	//finally {
