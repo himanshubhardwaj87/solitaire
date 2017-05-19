@@ -7,10 +7,9 @@ bat 'npm install'
 }
 
 def runTests(browser) {
-    node {
+
 		bat "npm run test-single-run -- --browsers ${browser}"
-        
-    }
+
 }
 
 def archive(){
@@ -27,7 +26,7 @@ bat 'npm run test-single-run -- --browsers PhantomJS'
     // archive karma test results (karma is configured to export junit xml files)
    archive()
 }
-
+}
 
 
 paralleltask["Browser Testing"] = {  
