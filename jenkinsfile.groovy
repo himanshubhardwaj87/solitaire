@@ -18,10 +18,9 @@ bat 'npm run test-single-run -- --browsers PhantomJS'
 
 //parallel integration testing
 stage 'Browser Testing'
-    runTests("Chrome")
-	node{
-echo "{status}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}] ${env.BRANCH_NAME} ${env.NODE_NAME}'"
-}
+  parallel ChromeTest: {runTests("Chrome")},
+		   FirefoxTest: {runTests("Firefox")}
+
 def runTests(browser) {
     node {
         // on windows use: bat 'del /S /Q *'
