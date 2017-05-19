@@ -1,3 +1,7 @@
+import hudson.model.*
+import groovy.json.*
+import java.net.URL
+
 stage 'CI'
 node {
     checkout scm
