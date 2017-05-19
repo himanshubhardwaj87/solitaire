@@ -21,7 +21,7 @@ node {
 	}
 }
 
-  if (currentBuild.result == null) {
+  if (currentBuild.result == null || currentBuild.result == 'SUCCESS' || currentBuild.result == 'FAILURE') {
 //parallel integration testing
 stage 'Browser Testing'
 
