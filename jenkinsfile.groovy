@@ -45,11 +45,5 @@ bat 'npm run test-single-run -- --browsers PhantomJS'
 }
 
 
-paralleltask["Browser Testing"] = {  
-    node() {
-		runTests("Chrome")
-		archive()
-    }
-}
 
 parallel paralleltask
