@@ -9,7 +9,7 @@ stage 'PhantomJS Testing'
 node {
 	try{
 	// test with PhantomJS for "fast" "generic" results
-	bat 'npm run test-single-run -- --browsers PhantomJS'
+	bat 'npm run test-singl-run -- --browsers PhantomJS'
 	 currentBuild.result = 'SUCCESS'
 	}catch (Exception err) {
         currentBuild.result = 'FAILURE'
